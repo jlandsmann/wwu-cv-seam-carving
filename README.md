@@ -1,0 +1,1 @@
+# wwu-cv-seam-carving
