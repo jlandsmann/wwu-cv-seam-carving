@@ -3,6 +3,7 @@ import pandas as pd
 from torch.utils.data import Dataset
 from torchvision.io import read_image
 
+
 class ImageDataset(Dataset):
     def __init__(self, annotations_file, img_dir, transform=None, target_transform=None):
         self.img_labels = pd.read_csv(annotations_file)
@@ -23,5 +24,6 @@ class ImageDataset(Dataset):
             label = self.target_transform(label)
         return image, label
 
-def getTestDataset() -> ImageDataset:
+
+def get_test_dataset() -> ImageDataset:
     return ImageDataset(annotations_file="data/test/labels.csv", img_dir="data/test")
