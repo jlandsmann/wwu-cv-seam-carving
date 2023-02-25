@@ -1,41 +1,16 @@
 import torch
 from torch import nn
-from torch.utils.data import DataLoader
-from torchvision import datasets
-from torchvision.transforms import ToTensor
 
 from models.neural_network import NeuralNetwork
-
-# Download training data from open datasets.
-training_data = datasets.FashionMNIST(
-    root="data",
-    train=True,
-    download=True,
-    transform=ToTensor(),
-)
-
-# Download test data from open datasets.
-test_data = datasets.FashionMNIST(
-    root="data",
-    train=False,
-    download=True,
-    transform=ToTensor(),
-)
-
-batch_size = 64
-
-# Create data loaders.
-train_dataloader = DataLoader(training_data, batch_size=batch_size)
-test_dataloader = DataLoader(test_data, batch_size=batch_size)
-
-# Get cpu or gpu device for training.
-device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+from models.test_dataset import test_dataloader
+from models.train_dataset import train_dataloader
+from constants import DEVICE
 
 def do_train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
     for batch, (X, y) in enumerate(dataloader):
-        X, y = X.to(device), y.to(device)
+        X, y = X.to(DEVICE), y.to(DEVICE)
 
         # Compute prediction error
         pred = model(X)
@@ -57,7 +32,7 @@ def do_test(dataloader, model, loss_fn):
     test_loss, correct = 0, 0
     with torch.no_grad():
         for X, y in dataloader:
-            X, y = X.to(device), y.to(device)
+            X, y = X.to(DEVICE), y.to(DEVICE)
             pred = model(X)
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()

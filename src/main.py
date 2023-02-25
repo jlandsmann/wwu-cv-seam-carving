@@ -4,8 +4,8 @@ from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 
 from init import init
-# from test import test
 from models.image_dataset import get_test_dataset
+from constants import DEVICE
 from train import train
 
 
@@ -24,8 +24,7 @@ def output_test_images():
 
 
 def main():
-    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-    print(f"Using {device} device")
+    print(f"Using {DEVICE} device")
 
     output_test_images()
 
