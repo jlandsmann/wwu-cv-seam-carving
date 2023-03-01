@@ -6,7 +6,6 @@ from models.neural_network import NeuralNetwork
 from models.test_dataset import test_dataloader
 from models.train_dataset import train_dataloader
 from constants import DEVICE
-from models.image_dataset import get_test_dataset
 
 def do_train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -23,7 +22,7 @@ def do_train(dataloader, model, loss_fn, optimizer):
         loss.backward()
         optimizer.step()
 
-        if batch % 100 == 0:
+        if batch % 1 == 0:
             loss, current = loss.item(), (batch + 1) * len(X)
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
 
@@ -48,15 +47,12 @@ def train():
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
-
-    data = get_test_dataset()
-    dataloader = DataLoader(data, batch_size=64, shuffle=False)
     
     epochs = 10
     for t in range(epochs):
         print(f"Epoch {t+1}\n-------------------------------")
-        do_train(dataloader, model, loss_fn, optimizer)
-        do_test(dataloader, model, loss_fn)
+        do_train(train_dataloader, model, loss_fn, optimizer)
+        do_test(test_dataloader, model, loss_fn)
     print("Done Training!")
 
     torch.save(model.state_dict(), "data/models/v1.pth")
