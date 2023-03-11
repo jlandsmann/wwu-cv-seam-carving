@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from models.neural_network import NeuralNetwork
 from models.test_dataset import test_dataloader
 from models.train_dataset import train_dataloader
-from constants import DEVICE
+from constants import DEVICE, LEARNING_RATE, EPOCHS, BATCH_SIZE, MODEL_PATH
 
 def do_train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -43,17 +43,16 @@ def do_test(dataloader, model, loss_fn):
 
 def train():
     model = NeuralNetwork()
-    model.load_state_dict(torch.load("data/models/v1.pth"))
+    model.load_state_dict(torch.load(MODEL_PATH))
 
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.SGD(model.parameters(), lr=LEARNING_RATE)
     
-    epochs = 10
-    for t in range(epochs):
+    for t in range(EPOCHS):
         print(f"Epoch {t+1}\n-------------------------------")
         do_train(train_dataloader, model, loss_fn, optimizer)
         do_test(test_dataloader, model, loss_fn)
-    print("Done Training!")
 
-    torch.save(model.state_dict(), "data/models/v1.pth")
-    print("Saved PyTorch Model State to data/models/v1.pth")
+        torch.save(model.state_dict(), MODEL_PATH)
+        print("Saved PyTorch Model State to " + MODEL_PATH)
+    print("Done Training!")

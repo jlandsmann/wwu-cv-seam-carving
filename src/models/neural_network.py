@@ -6,7 +6,7 @@ class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
         self.linear_relu_stack = nn.Sequential(
-            bt.BlockTypeA(3, 16),
+            bt.BlockTypeA(1, 16),
             bt.BlockTypeA(16, 16),
             
             bt.BlockTypeB(16),
