@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from models.neural_network import NeuralNetwork
 from models.test_dataset import test_dataloader
 from models.train_dataset import train_dataloader
-from constants import DEVICE, LEARNING_RATE, EPOCHS, BATCH_SIZE, MODEL_PATH
+from constants import DEVICE, LEARNING_RATE, EPOCHS, BETA_RANGE, MODEL_PATH, EPISLON
 
 def do_train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -46,7 +46,7 @@ def train():
     model.load_state_dict(torch.load(MODEL_PATH))
 
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=LEARNING_RATE)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, betas=BETA_RANGE, eps=EPISLON)
     
     for t in range(EPOCHS):
         print(f"Epoch {t+1}\n-------------------------------")

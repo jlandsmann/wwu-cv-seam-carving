@@ -25,3 +25,25 @@ and will be referenced as "DCNN".
 | DCNN-5    | First 512 | 16         | 10     | 1e-3          | 0.636411  | 69.3%    |
 | DCNN-6    | First 512 | 32         | 10     | 1e-3          | 0.634630  | 69.3%    |
 | DCNN-7    | First 512 | 32         | 20     | 1e-3          | 0.625384  | 69.3%    |
+
+## New optimizer
+In the previous tests we observed that the accuracy 
+and the loss were very stable after a few epochs.
+But the accuracy is quite low, so we tested a different optimzer.
+Instead of the SGD-Optimizer we then started to use the Adam-optimizer,
+which is also used in the paper
+"Deep Convolutional Neural Network for Identifying Seam-Carving Forgery".
+
+| Network     | Dataset   | Batch Size | Epochs | LR   | b1, b2     | eps  | Avg. Loss | Accuracy |
+| ----------- | --------- | ---------- | ------ | ---- | ---------- | ---- | --------- | -------- |
+| DCNN-ADAM-1 | First 512 | 16         | 10     | 1e-3 | 0.9 , 0.99 | 1e-8 | 0.635976  | 65.0%    |
+| DCNN-ADAM-1 | First 512 | 16         | 20     | 1e-3 | 0.9 , 0.99 | 1e-8 | 0.665614  | 60.9%    |
+| DCNN-ADAM-2 | First 512 | 16         | 7      | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.665614  | 65.2%    |
+| DCNN-ADAM-2 | First 512 | 16         | 8      | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.665614  | 40.6%    |
+| DCNN-ADAM-2 | First 512 | 16         | 10     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.665614  | 50.4%    |
+| DCNN-ADAM-2 | First 512 | 16         | 20     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.651364  | 65.2%    |
+
+During the first test with the new optimizer (DCNN-ADAM-1)
+we observed a way more variation of accuracy and loss.
+That's the reason why we decided to keep the new optimizer
+altough the accuracy is lower than before. 
