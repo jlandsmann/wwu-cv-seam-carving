@@ -1,18 +1,14 @@
-import torch
-from torch.utils.data import DataLoader
-
-import matplotlib.pyplot as plt
-
-from init import init
 from constants import DEVICE
+from init import init
 from train import train
+from test import test
 
 def main():
     print(f"Using {DEVICE} device")
 
     init()
     train()
-
+    #test()
     pass
 
 

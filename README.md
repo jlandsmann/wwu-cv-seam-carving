@@ -23,4 +23,5 @@ and will be referenced as "DCNN".
 | Network   | Dataset   | Batch Size | Epochs | Learning rate | Avg. Loss | Accuracy |
 | --------- | --------- | ---------- | ------ | ------------- | --------- | -------- |
 | DCNN-5    | First 512 | 16         | 10     | 1e-3          | 0.636411  | 69.3%    |
-| DCNN-6    | First 512 | 32         | 10     | 1e-3          | 0.636411  | 69.3%    |
+| DCNN-6    | First 512 | 32         | 10     | 1e-3          | 0.634630  | 69.3%    |
+| DCNN-7    | First 512 | 32         | 20     | 1e-3          | 0.625384  | 69.3%    |
