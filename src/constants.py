@@ -1,10 +1,10 @@
 from torch import cuda
 from torch.backends import mps
 
-MODEL_NAME = "DCNN-ADAM-2"
+MODEL_NAME = "DCNN-ADAM-3"
 MODEL_PATH = "data/models/" + MODEL_NAME + ".pth"
 OFFSET = 0
-TRAIN_ITEMS = 512
+TRAIN_ITEMS = 512000
 BATCH_SIZE = 16
 EPOCHS = 10
 LEARNING_RATE = 1e-3

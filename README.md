@@ -42,6 +42,9 @@ which is also used in the paper
 | DCNN-ADAM-2 | First 512 | 16         | 8      | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.665614  | 40.6%    |
 | DCNN-ADAM-2 | First 512 | 16         | 10     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.665614  | 50.4%    |
 | DCNN-ADAM-2 | First 512 | 16         | 20     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.651364  | 65.2%    |
+| DCNN-ADAM-2 | First 512 | 16         | 30     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.674053  | 61.9%    |
+| DCNN-ADAM-3 | All       | 16         | 10     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.615799  | 67.6%    |
+| DCNN-ADAM-3 | All       | 16         | 20     | 1e-3 | 0.9 , 0.99 | 1e-4 | 0.611167  | 67.7%    |
 
 During the first test with the new optimizer (DCNN-ADAM-1)
 we observed a way more variation of accuracy and loss.
