@@ -50,3 +50,15 @@ During the first test with the new optimizer (DCNN-ADAM-1)
 we observed a way more variation of accuracy and loss.
 That's the reason why we decided to keep the new optimizer
 altough the accuracy is lower than before. 
+We noticed that the accuracy still converges,
+so we tested different optimizer and loss functions.
+But neither had a noticeable impact.
+
+So we set up the theorie our network 
+has too many paramters for too little data.
+The fact that we cannot overfit our model
+by using the same data for training and testing.
+
+## Smaller network
+That the reason why we reduced our network size
+to ensure that our paramter count is not too large.

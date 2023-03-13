@@ -8,7 +8,7 @@ class BlockTypeB(nn.Module):
             BlockTypeA(dimensions, dimensions),
 
             nn.Conv2d(dimensions, dimensions, kernel_size=1),
-            nn.BatchNorm2d(dimensions),
+            # nn.BatchNorm2d(dimensions),
             nn.ReLU(),
         )
 

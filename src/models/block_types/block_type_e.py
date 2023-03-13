@@ -7,7 +7,7 @@ class BlockTypeE(nn.Module):
             nn.AdaptiveAvgPool2d(output_size=1),
             nn.Flatten(),
             nn.Linear(in_dimensions, out_dimensions),
-            nn.Softmax(),
+            nn.Softmax(dim=0),
         )
 
     def forward(self, x):

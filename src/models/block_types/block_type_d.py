@@ -11,7 +11,7 @@ class BlockTypeD(nn.Module):
         )
         self.block_stack_second = nn.Sequential(
             nn.Conv2d(in_dimensions, out_dimensions, kernel_size=1, stride=2),
-            nn.BatchNorm2d(out_dimensions),
+            # nn.BatchNorm2d(out_dimensions),
         )
 
     def forward(self, x):

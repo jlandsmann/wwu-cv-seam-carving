@@ -10,7 +10,7 @@ class BlockTypeC(nn.Module):
         self.b = BlockTypeA(dimensions, 2*dimensions)
         self.block_stack = nn.Sequential(
             nn.Conv2d(4*dimensions, dimensions, kernel_size=1),
-            nn.BatchNorm2d(dimensions),
+            # nn.BatchNorm2d(dimensions),
             nn.ReLU(),
         )
 
