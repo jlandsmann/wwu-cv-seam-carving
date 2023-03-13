@@ -1,10 +1,10 @@
 import torch
-from models.neural_network import NeuralNetwork
+from models.dcnn import DCNN
 from models.test_dataset import test_dataloader
 from constants import MODEL_PATH, DEVICE, BATCH_SIZE
 
 def test():
-    model = NeuralNetwork()
+    model = DCNN()
     model.load_state_dict(torch.load(MODEL_PATH))
 
     size = len(test_dataloader.dataset)

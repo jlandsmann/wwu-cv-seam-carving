@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 
-from models.neural_network import NeuralNetwork
+from models.dcnn import DCNN
 from models.test_dataset import test_dataloader
 from models.train_dataset import train_dataloader
 from constants import DEVICE, LEARNING_RATE, EPOCHS, BETA_RANGE, MODEL_PATH, EPISLON
@@ -42,7 +42,7 @@ def do_test(dataloader, model, loss_fn):
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 def train():
-    model = NeuralNetwork()
+    model = DCNN()
     model.load_state_dict(torch.load(MODEL_PATH))
 
     loss_fn = nn.CrossEntropyLoss()

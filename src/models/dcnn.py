@@ -2,7 +2,7 @@ from torch import nn
 
 from . import block_types as bt
 
-class NeuralNetwork(nn.Module):
+class DCNN(nn.Module):
     def __init__(self):
         super().__init__()
         self.linear_relu_stack = nn.Sequential(

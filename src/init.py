@@ -2,7 +2,7 @@ import torch
 from os.path import exists
 from time import sleep
 
-from models.neural_network import NeuralNetwork
+from models.dcnn import DCNN
 from constants import DEVICE, MODEL_PATH
 
 def init():
@@ -12,7 +12,7 @@ def init():
         sleep(5)
         return
 
-    model = NeuralNetwork().to(DEVICE)
+    model = DCNN().to(DEVICE)
 
     torch.save(model.state_dict(), MODEL_PATH)
     print("Saved PyTorch Model State to " + MODEL_PATH)
