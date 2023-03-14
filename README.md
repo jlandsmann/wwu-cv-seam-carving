@@ -62,3 +62,13 @@ by using the same data for training and testing.
 ## Smaller network
 That the reason why we reduced our network size
 to ensure that our paramter count is not too large.
+With the network from the paper
+"Seam Carving Detection Using Convolutional Neural Networks"
+we tried first to provocate overfitting
+by training and testing on the same dataset.
+After that worked we moved forward
+and started new models with separated test- and trainingsdata.
+
+| Network    | Dataset   | Batch Size | Epochs | LR   | b1, b2     | eps  | Avg. Loss | Accuracy |
+| ---------- | --------- | ---------- | ------ | ---- | ---------- | ---- | --------- | -------- |
+| CNN-ADAM-1 | All       | 8          | 10     | 1e-5 | 0.9 , 0.99 | 1e-6 | 0.599068  | 70.1%    |
