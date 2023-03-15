@@ -83,3 +83,11 @@ so the optimization process of the hyper parameters is less complicated.
 | CNN-SGD-2 | All       | 8          | 10     | 1e-7 | 9e-1      | 0.682758  | 57.2%    |
 | CNN-SGD-3 | All       | 8          | 10     | 1e-3 | 9e-1      | 0.710225  | 54.8%    |
 | CNN-SGD-4 | All       | 4          | 10     | 1e-3 | 99e-2     | 0.689581  | 61.3%    |
+
+Update number of dimensions in convolutional layers:
+From 1 -> 8 -> 5 -> 1
+To 1 -> 3 -> 2 -> 1     => overfitting, only labelling carved
+
+To 1 -> 4 -> 16 -> 1
+Epochs=10 LR=1e-3 MOM=99e-2
+Accuracy: 58.8%, Avg loss: 0.702854 

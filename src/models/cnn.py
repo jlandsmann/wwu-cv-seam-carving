@@ -5,15 +5,15 @@ class CNN(nn.Module):
         super().__init__()
         self.flatten = nn.Flatten()
         self.linear_relu_stack = nn.Sequential(
-            nn.Conv2d(1, 8, kernel_size=3),
-            nn.BatchNorm2d(8),
+            nn.Conv2d(1, 4, kernel_size=3),
+            nn.BatchNorm2d(4),
             nn.ReLU(),
 
-            nn.Conv2d(8, 5, kernel_size=3),
-            nn.BatchNorm2d(5),
+            nn.Conv2d(4, 16, kernel_size=3),
+            nn.BatchNorm2d(16),
             nn.ReLU(),
             
-            nn.Conv2d(5, 1, kernel_size=3),
+            nn.Conv2d(16, 1, kernel_size=3),
             nn.BatchNorm2d(1),
             nn.ReLU(),
 

@@ -1,6 +1,6 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
-from torchvision.transforms import ToTensor
+from torchvision.transforms import functional
 
 from constants import BATCH_SIZE, DATA_ROOT
 from .image_dataset import ImageDataset
