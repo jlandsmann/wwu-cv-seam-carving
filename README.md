@@ -72,3 +72,14 @@ and started new models with separated test- and trainingsdata.
 | Network    | Dataset   | Batch Size | Epochs | LR   | b1, b2     | eps  | Avg. Loss | Accuracy |
 | ---------- | --------- | ---------- | ------ | ---- | ---------- | ---- | --------- | -------- |
 | CNN-ADAM-1 | All       | 8          | 10     | 1e-5 | 0.9 , 0.99 | 1e-6 | 0.599068  | 70.1%    |
+
+
+We introduced a new optimizer SGD with less hyper parameters
+so the optimization process of the hyper parameters is less complicated.
+
+| Network   | Dataset   | Batch Size | Epochs | LR   | momentum  | Avg. Loss | Accuracy |
+| --------- | --------- | ---------- | ------ | ---- | --------- | --------- | -------- |
+| CNN-SGD-1 | All       | 8          | 10     | 1e-5 | 0         | 0.657398  | 60.4%    |
+| CNN-SGD-2 | All       | 8          | 10     | 1e-7 | 9e-1      | 0.682758  | 57.2%    |
+| CNN-SGD-3 | All       | 8          | 10     | 1e-3 | 9e-1      | 0.710225  | 54.8%    |
+| CNN-SGD-4 | All       | 4          | 10     | 1e-3 | 99e-2     | 0.689581  | 61.3%    |

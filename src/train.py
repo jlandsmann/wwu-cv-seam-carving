@@ -4,7 +4,7 @@ from torch import nn
 from models.cnn import CNN
 from models.test_dataset import test_dataloader
 from models.train_dataset import train_dataloader
-from constants import DEVICE, LEARNING_RATE, EPOCHS, BETA_RANGE, MODEL_PATH, EPISLON, BATCH_SIZE
+from constants import DEVICE, LEARNING_RATE, EPOCHS, BETA_RANGE, MODEL_PATH, EPISLON, BATCH_SIZE, MOMENTUM
 
 def do_train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -42,22 +42,35 @@ def do_test(dataloader, model, loss_fn):
     num_batches = len(dataloader)
     model.eval()
     test_loss, correct = 0, 0
+    count_carved, count_uncarved = 0, 0
+    pred_carved, pred_uncarved = 0, 0
     with torch.no_grad():
         for X, y in dataloader:
             X, y = X.to(DEVICE), y.to(DEVICE)
+
+            carved = torch.count_nonzero(y).item()
+            count_carved += carved
+            count_uncarved += BATCH_SIZE - carved
+
             pred = model(X)
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+
+            carved = torch.count_nonzero(torch.argmax(pred, 1)).item()
+            pred_carved += carved
+            pred_uncarved += BATCH_SIZE - carved
     test_loss /= num_batches
     correct /= size
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    print(f"real uncarved/carved: {count_uncarved:>5d}/{count_carved:>5d}")
+    print(f"pred uncarved/carved: {pred_uncarved:>5d}/{pred_carved:>5d}")
 
 def train():
     model = CNN()
     model.load_state_dict(torch.load(MODEL_PATH))
 
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, betas=BETA_RANGE, eps=EPISLON)
+    optimizer = torch.optim.SGD(model.parameters(), lr=LEARNING_RATE, momentum=MOMENTUM) # torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, betas=BETA_RANGE, eps=EPISLON)
 
     for t in range(EPOCHS):
         print(f"Epoch {t+1}\n-------------------------------")
