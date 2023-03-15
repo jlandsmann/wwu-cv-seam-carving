@@ -18,7 +18,7 @@ class ImageDataset(Dataset):
     def __getitem__(self, idx):
         img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
         image = read_image(img_path, ImageReadMode.GRAY).float()
-        label = self.img_labels.iloc[idx, 2]
+        label = int(self.img_labels.iloc[idx, 3] < 1)
         if self.transform:
             image = self.transform(image)
         if self.target_transform:
