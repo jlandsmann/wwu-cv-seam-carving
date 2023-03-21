@@ -91,3 +91,11 @@ To 1 -> 3 -> 2 -> 1     => overfitting, only labelling carved
 To 1 -> 4 -> 16 -> 1
 Epochs=10 LR=1e-3 MOM=99e-2
 Accuracy: 58.8%, Avg loss: 0.702854 
+
+
+## RESNET 50
+Some Tests with a residual neural network resulted in a similar (bad) accuracy
+
+| Network     | Dataset   | Batch Size | Epochs | LR   | b1, b2     | eps  | Avg. Loss | Accuracy |
+|-------------| --------- |------------| ------ |------| ---------- | ---- | --------- | -------- |
+| RESNET_50-1 | All       | 12         | 10     | 1e-3 | 0.9 , 0.99 | 1e-6 | 0.580487  | 69.1%    |
