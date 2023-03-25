@@ -70,7 +70,7 @@ def train():
     model.load_state_dict(torch.load(MODEL_PATH))
 
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=LEARNING_RATE, momentum=MOMENTUM) # torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, betas=BETA_RANGE, eps=EPISLON)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, betas=BETA_RANGE, eps=EPISLON)
 
     for t in range(EPOCHS):
         print(f"Epoch {t+1}\n-------------------------------")

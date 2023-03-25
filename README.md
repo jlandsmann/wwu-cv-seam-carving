@@ -86,12 +86,19 @@ so the optimization process of the hyper parameters is less complicated.
 
 Update number of dimensions in convolutional layers:
 From 1 -> 8 -> 5 -> 1
-To 1 -> 3 -> 2 -> 1     => overfitting, only labelling carved
+To 1 -> 3 -> 2 -> 1     => overfitting, only labelling carved (CNN-SGD-5)
 
 To 1 -> 4 -> 16 -> 1
 Epochs=10 LR=1e-3 MOM=99e-2
-Accuracy: 58.8%, Avg loss: 0.702854 
+Accuracy: 58.8%, Avg loss: 0.702854 (CNN-SGD-6)
 
+CNN-SGD-7
+Epochs=10 LR=1e-5 MOM=4e-1
+Accuracy: 68.7%, Avg loss: 0.646938
+
+CNN-SGD-8
+Epochs=10 LR=1e-7 MOM=1e-1 BatchSize=16
+Accuracy: 61.4%, Avg loss: 0.687373
 
 ## RESNET 50
 Some Tests with a residual neural network resulted in a similar (bad) accuracy
