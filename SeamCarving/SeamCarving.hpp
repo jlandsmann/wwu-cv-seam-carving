@@ -14,3 +14,4 @@ vector<int> findSeam(Mat& energy);
 float energy(Mat& img, int x, int y);
 Mat energyImage(Mat& img);
 void energyImage(Mat& img, Mat& oldEnergyImg,vector<int>& seam);
+void data(string destImagePath, string sourceImagePath, int imageSize);
